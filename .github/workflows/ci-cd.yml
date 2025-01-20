@@ -3,10 +3,10 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - development  # Запуск CI на development
+      - development # Запуск CI на development
   pull_request:
     branches:
-      - master  # Проверка PR в master
+      - master # Проверка PR в master
 
 jobs:
   build-and-test:
@@ -26,7 +26,9 @@ jobs:
 
       # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm run prepare  # Инициализация Husky
 
       # Step 4: Lint and Format Check
       - name: Run ESLint and Prettier
